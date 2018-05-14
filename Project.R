@@ -1,4 +1,4 @@
-x <- read.csv("testcase1.csv", header=TRUE)
+x <- read.csv(file=file.choose(), header=TRUE)
 x1<-x[,1]
 y1<-x[,2]
 x1<-x1[!is.na(x1)]
