@@ -13,7 +13,7 @@ anyOutliers <- function(x) { #check quantile function
   q <- quantile(x)
   range <- IQR(x)
   min <- q[2] - (range * 1.5)
-  max <- q[4] - (range * 1.5)
+  max <- q[4] + (range * 1.5)
   
   for (i in 1:length(x)) {
     if(x[i] < min || x[i] > max) {
@@ -21,6 +21,7 @@ anyOutliers <- function(x) { #check quantile function
     }
   }
   return(FALSE)
+}
 
 isDependent<-function(){DI=='D'}
 
