@@ -23,12 +23,12 @@ anyOutliers <- function(x) { #check quantile function
   return(FALSE)
 }
 
-isDependent<-function(){DI=='D'}
 
 isNormal<-function(vec){
   pVal<-shapiro.test(vec)$p.value
   return(pVal > 0.05)
 }
+
 
 isEqualVar<-function(){
   sdX <- sd(x1)
@@ -38,6 +38,17 @@ isEqualVar<-function(){
   }
   else{
     return ((sdY/sdX) < 2)
+  }
+}
+
+
+matchedPairs<-function(){
+  testResult <- (t.test(x = x1,y = y1,paired = TRUE, alternative = "two.sided", conf.level = .95))
+  if (testResult$p.value < 0.05){
+    print(paste("p=", testResult$p.value, ", Can reject null"))
+  }
+  else{
+    print(paste("p=", testResult$p.value, ", Failed to reject null"))
   }
 }
 
